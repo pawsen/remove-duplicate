@@ -22,8 +22,8 @@
 
 import argparse
 import shutil
-import sys
 from pathlib import Path
+import sys
 
 from PIL import Image
 
@@ -55,8 +55,9 @@ parser.add_argument(
     help="verbosity level. 2 for printing all images that are moved",
 )
 
-
-args = vars(parser.parse_args())
+# print help message if called without arguments
+varargs = parser.parse_args(args=None if sys.argv[1:] else ['--help'])
+args = vars(varargs)
 fn = args["file"]
 backupdir = args["backupdir"]
 verbosity = args["verbosity"]
